@@ -2,12 +2,15 @@
 <html class="page" lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no"
+    />
     <title>Shop</title>
     <link rel="stylesheet" href="/style/catalog.css" />
     <link rel="stylesheet" href="/style/main.css" />
     <link rel="stylesheet" href="/style/modal_cart.css" />
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/style/multi_range_slider.css" />
   </head>
   <body class="page-body inner-page">
     <header class="main-header">
@@ -40,75 +43,44 @@
         <h2 class="visually-hidden">Product filters</h2>
         <div class="filter">
           <div class="filter-section">
-            <h3>Price categories</h3>
-           
-            <ul>
-              <li class="filter-option filter-checkbox">
-                <input
-                  class="visually-hidden filter-input-checkbox filter-input"
-                  type="checkbox"
-                  name="price"
-                  id="filter-price-0-10"
-                />
-                <label for="filter-price-0-10">
-                  0-10
-                </label>
-              </li>
-              <li class="filter-option filter-checkbox">
-                <input
-                  class="visually-hidden filter-input-checkbox filter-input"
-                  type="checkbox"
-                  name="price"
-                  id="filter-price-10-50"
-                  value="10-50"
-                />
-                <label for="filter-price-10-50">
-                  10-50
-                </label>
-              </li>
-              <li class="filter-option filter-checkbox">
-                <input
-                  class="visually-hidden filter-input-checkbox filter-input"
-                  type="checkbox"
-                  name="price"
-                  id="filter-price-50-100"
-                  value="50-100"
-                />
-                <label for="filter-price-50-100">
-                  50-100
-                </label>
-              </li>
-              <li class="filter-option filter-checkbox">
-                <input
-                  class="visually-hidden filter-input-checkbox filter-input"
-                  type="checkbox"
-                  name="price"
-                  id="filter-price-100-500"
-                  value="100-500"
-                />
-                <label for="filter-price-100-500">
-                  100-500
-                </label>
-              </li>
-              <li class="filter-option filter-checkbox">
-                <input
-                  class="visually-hidden filter-input-checkbox filter-input"
-                  type="checkbox"
-                  name="price"
-                  id="filter-price-500-1000"
-                  value="500-1000"
-                />
-                <label for="filter-price-500-1000">
-                  500-1000
-                </label>
-              </li>
-            </ul>
+            <h3>Price category</h3>
+            <div slider id="slider-distance" class="price-slider">
+              <div>
+                <div inverse-left style="width: 0%"></div>
+                <div inverse-right style="width: 100%"></div>
+                <div range style="left: 0%; right: 0%"></div>
+                <span thumb style="left: 0%"></span>
+                <span thumb style="left: 100%"></span>
+                <div sign style="left: 0%">
+                  <span id="value">0</span>
+                </div>
+                <div sign style="left: 100%">
+                  <span id="value">1000</span>
+                </div>
+              </div>
+              <input
+                class="price-slider-min"
+                type="range"
+                tabindex="0"
+                value="0"
+                max="1000"
+                min="0"
+                step="1"
+              />
+              <input
+                class="price-slider-max"
+                type="range"
+                tabindex="0"
+                value="1000"
+                max="1000"
+                min="0"
+                step="1"
+              />
+            </div>
           </div>
           <div class="filter-section">
             <h3>Product group</h3>
-            <ul class = "product-groups">
-              
-            </ul>
+            <ul class="product-groups"></ul>
           </div>
           <button class="button filter-button">Show</button>
         </div>
@@ -121,21 +93,27 @@
     <footer class="page-footer main-footer">
       <div class="container">
         <section class="footer-contacts">
-          <p>
-            Classic Cuts & Co<br />
-            ADDRESS: 5331 REXFORD COURT, MONTGOMERY AL 36116</p>
-            <p><a href="#">How to find us?</a></p>
-            <p>PHONE NUMBER: +1 (800) 451-0521</p>
-          </p>
+          <p>Classic Cuts & Co</p>
+          <p>ADDRESS: 5331 REXFORD COURT, MONTGOMERY AL 36116</p>
+          <p><a href="#">How to find us?</a></p>
+          <p>PHONE NUMBER: +1 (800) 451-0521</p>
         </section>
         <section class="footer-social">
           <h2>Our socials</h2>
           <ul>
             <li>
-              <a class="social-button button-facebook" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank"></a>
+              <a
+                class="social-button button-facebook"
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                target="_blank"
+              ></a>
             </li>
             <li>
-              <a class="social-button button-instagram" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank"></a>
+              <a
+                class="social-button button-instagram"
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                target="_blank"
+              ></a>
             </li>
           </ul>
         </section>
@@ -150,19 +128,15 @@
     <div class="modal modal-back">
       <section class="modal modal-cart">
         <h2 class="cart-title">Cart</h2>
-        <ul class="cart-list">
-          
-        </ul>
+        <ul class="cart-list"></ul>
         <button class="modal-close" type="button" aria-label="Закрыть">
-          <img
-            class="modal-close-image"
-            src="/pictures/svg/cross_icon.svg"
-          />
+          <img class="modal-close-image" src="/pictures/svg/cross_icon.svg" />
         </button>
       </section>
     </div>
-    
+
     <script src="script/cart_script.js"></script>
     <script src="script/catalog_script.js"></script>
+    <script src="script/slider_script.js"></script>
   </body>
 </html>

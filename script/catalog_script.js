@@ -126,8 +126,12 @@ filterButton.onclick = () => {
   const filterCategory = document.querySelector(
     'input[name="product-group"]:checked'
   ).value;
+  const priceMin = document.querySelector(".price-slider-min").value;
+  const priceMax = document.querySelector(".price-slider-max").value;
   fetchCategoryProducts(filterCategory).then((products) => {
+    products = products.filter(
+      (product) => product.price < priceMax && product.price > priceMin
+    );
     setProducts(products);
   });
-  
 };
