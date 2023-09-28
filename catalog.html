@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="page" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop</title>
+    <link rel="stylesheet" href="/style/catalog.css" />
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/modal_cart.css" />
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body class="page-body inner-page">
+    <header class="main-header">
+      <nav class="main-navigation">
+        <div class="main-navigation-wrapper">
+          <div class="container">
+            <ul class="site-navigation">
+              <li><a href="/index.html">Info</a></li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Price-List</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Contacts</a></li>
+            </ul>
+
+            <div class="header-cart">
+              <a href="#" class="cart">Cart</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="page-catalog container">
+      <h1 class="page-title">Merch</h1>
+      <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Shop</a></li>
+        <li class="breadcrumbs-current">Merch</li>
+      </ul>
+      <section class="filters">
+        <h2 class="visually-hidden">Product filters</h2>
+        <div class="filter">
+          <div class="filter-section">
+            <h3>Price categories</h3>
+           
+            <ul>
+              <li class="filter-option filter-checkbox">
+                <input
+                  class="visually-hidden filter-input-checkbox filter-input"
+                  type="checkbox"
+                  name="price"
+                  id="filter-price-0-10"
+                />
+                <label for="filter-price-0-10">
+                  0-10
+                </label>
+              </li>
+              <li class="filter-option filter-checkbox">
+                <input
+                  class="visually-hidden filter-input-checkbox filter-input"
+                  type="checkbox"
+                  name="price"
+                  id="filter-price-10-50"
+                  value="10-50"
+                />
+                <label for="filter-price-10-50">
+                  10-50
+                </label>
+              </li>
+              <li class="filter-option filter-checkbox">
+                <input
+                  class="visually-hidden filter-input-checkbox filter-input"
+                  type="checkbox"
+                  name="price"
+                  id="filter-price-50-100"
+                  value="50-100"
+                />
+                <label for="filter-price-50-100">
+                  50-100
+                </label>
+              </li>
+              <li class="filter-option filter-checkbox">
+                <input
+                  class="visually-hidden filter-input-checkbox filter-input"
+                  type="checkbox"
+                  name="price"
+                  id="filter-price-100-500"
+                  value="100-500"
+                />
+                <label for="filter-price-100-500">
+                  100-500
+                </label>
+              </li>
+              <li class="filter-option filter-checkbox">
+                <input
+                  class="visually-hidden filter-input-checkbox filter-input"
+                  type="checkbox"
+                  name="price"
+                  id="filter-price-500-1000"
+                  value="500-1000"
+                />
+                <label for="filter-price-500-1000">
+                  500-1000
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="filter-section">
+            <h3>Product group</h3>
+            <ul class = "product-groups">
+              
+            </ul>
+          </div>
+          <button class="button filter-button">Show</button>
+        </div>
+      </section>
+      <section class="catalog">
+        <h2 class="visually-hidden">List of products</h2>
+        <ul class="catalog-list"></ul>
+      </section>
+    </main>
+    <footer class="page-footer main-footer">
+      <div class="container">
+        <section class="footer-contacts">
+          <p>
+            Classic Cuts & Co<br />
+            ADDRESS: 5331 REXFORD COURT, MONTGOMERY AL 36116</p>
+            <p><a href="#">How to find us?</a></p>
+            <p>PHONE NUMBER: +1 (800) 451-0521</p>
+          </p>
+        </section>
+        <section class="footer-social">
+          <h2>Our socials</h2>
+          <ul>
+            <li>
+              <a class="social-button button-facebook" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank"></a>
+            </li>
+            <li>
+              <a class="social-button button-instagram" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank"></a>
+            </li>
+          </ul>
+        </section>
+        <div class="footer-copyright">
+          <p class="button">Made by Nik Bars</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="cart-added-toast">Item added to cart!</div>
+
+    <div class="modal modal-back">
+      <section class="modal modal-cart">
+        <h2 class="cart-title">Cart</h2>
+        <ul class="cart-list">
+          
+        </ul>
+        <button class="modal-close" type="button" aria-label="Закрыть">
+          <img
+            class="modal-close-image"
+            src="/pictures/svg/cross_icon.svg"
+          />
+        </button>
+      </section>
+    </div>
+    
+    <script src="script/cart_script.js"></script>
+    <script src="script/catalog_script.js"></script>
+  </body>
+</html>
