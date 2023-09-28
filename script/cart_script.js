@@ -2,7 +2,8 @@ const cartButton = document.querySelector(".cart");
 const cartPopup = document.querySelector(".modal-back");
 const cartClose = cartPopup.querySelector(".modal-close");
 const cartList = cartPopup.querySelector(".cart-list");
-const body = document.querySelector("body")
+const cartReceiptSumLabel = cartPopup.querySelector(".cart-receipt-sum");
+const body = document.querySelector("body");
 
 if (!localStorage.getItem("cart")) {
   localStorage.setItem("cart", JSON.stringify([]));
@@ -11,7 +12,7 @@ let cartItems = JSON.parse(localStorage.getItem("cart"));
 
 cartButton.onclick = (event) => {
   event.preventDefault();
-
+  setTotalSum(cartItems);
   cartPopup.classList.add("modal-show");
   body.style.overflow = "hidden";
   cartList.innerHTML = cartItems.reduce(
@@ -77,10 +78,15 @@ cartClose.onclick = (event) => {
   body.style.overflow = "auto";
   cartPopup.classList.remove("modal-show");
 };
-
+const setTotalSum = (cartItems) =>{
+  const receiptSum = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
+  cartReceiptSumLabel.textContent = `${receiptSum.toFixed(2)}$`;
+}
 cartList.onclick = (event) => {
   let target = event.target;
-  
+
   if (target.parentElement.classList.contains("quantity-button-plus")) {
     const product = findParentWithClass(target, "cart-item");
     const quantityInput = product.querySelector(".cart-item-quantity");
@@ -88,20 +94,22 @@ cartList.onclick = (event) => {
 
     const productId = product.getAttribute("data-product-id");
     const item = cartItems.find((item) => item.id == productId);
-   
+
     item.quantity++;
     quantityInput.value++;
     priceLabel.innerText = `${(item.price * item.quantity).toFixed(2)} $`;
     localStorage.setItem("cart", JSON.stringify(cartItems));
+
+    setTotalSum(cartItems);
   }
   if (target.parentElement.classList.contains("quantity-button-minus")) {
     const product = findParentWithClass(target, "cart-item");
     const quantityInput = product.querySelector(".cart-item-quantity");
     const priceLabel = product.querySelector(".cart-item-price");
-    
+
     const productId = product.getAttribute("data-product-id");
     const item = cartItems.find((item) => item.id == productId);
-    
+
     if (item.quantity > 1) {
       item.quantity--;
       quantityInput.value--;
@@ -109,19 +117,35 @@ cartList.onclick = (event) => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
+    setTotalSum(cartItems);
   }
   if (target.parentElement.classList.contains("cart-delete-button")) {
     const product = findParentWithClass(target, "cart-item");
 
     const productId = product.getAttribute("data-product-id");
     const item = cartItems.find((item) => item.id == productId);
-    
+
     cartItems.splice(cartItems.indexOf(item), 1);
     product.remove();
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
+    setTotalSum(cartItems);
   }
 };
+cartList.addEventListener("change", (event) => {
+  let target = event.target;
+
+  if (target.classList.contains("cart-item-quantity")) {
+    const product = findParentWithClass(target, "cart-item");
+    const productId = product.getAttribute("data-product-id");
+    const item = cartItems.find((item) => item.id == productId);
+    const priceLabel = product.querySelector(".cart-item-price");
+    item.quantity = target.value;
+    priceLabel.innerText = `${(item.price * item.quantity).toFixed(2)} $`;
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    setTotalSum(cartItems);
+  }
+});
 const findParentWithClass = (element, className) => {
   while (element && !element.classList.contains(className)) {
     element = element.parentElement;
@@ -134,16 +158,4 @@ const findParentWithClass = (element, className) => {
   }
 };
 
-cartList.addEventListener("change", (event) => {
-  let target = event.target;
 
-  if (target.classList.contains("cart-item-quantity")) {
-    const product = findParentWithClass(target, "cart-item");
-    const productId = product.getAttribute("data-product-id");
-    const item = cartItems.find((item) => item.id == productId);
-    const priceLabel = product.querySelector(".cart-item-price");
-    item.quantity = target.value;
-    priceLabel.innerText = `${(item.price * item.quantity).toFixed(2)} $`;
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }
-});
