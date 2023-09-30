@@ -1,0 +1,42 @@
+.inner-page {
+  color: var(--basic-black);
+  background-color: var(--basic-extra-light);
+}
+.main-header{
+  border-bottom: 1px solid var(--basic-neutral);
+}
+.main-header img {
+  margin: 10px;
+}
+#order-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px 10px;
+  justify-content: space-between;
+}
+.order-item {
+  width: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 10px;
+  flex: 1 0 auto;
+}
+.order-item label {
+  display: block;
+  margin-bottom: 9px;
+  margin-left: 15px;
+}
+.order-item input {
+  width: 100%;
+  padding-top: 8px;
+  padding-right: 15px;
+  padding-bottom: 7px;
+  padding-left: 15px;
+  font: inherit;
+  background-color: transparent;
+  border: 2px solid var(--basic-black);
+  box-sizing: border-box;
+}
+.validation-error-text {
+  color: red;
+  font-size: 13px;
+}

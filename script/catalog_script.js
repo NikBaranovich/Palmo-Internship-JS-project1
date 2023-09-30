@@ -83,7 +83,7 @@ const showToast = () => {
   toastElement.className = "show";
   setTimeout(() => {
     toastElement.className = toastElement.className.replace("show", "");
-  }, 3000);
+  }, 1500);
 };
 
 const addToCart = (products, productId) => {
