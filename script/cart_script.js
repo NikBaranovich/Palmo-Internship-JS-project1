@@ -15,6 +15,7 @@ cartButton.onclick = (event) => {
   setTotalSum(cartItems);
   cartPopup.classList.add("modal-show");
   body.style.overflow = "hidden";
+  cartList.childElementCount = 0;
   cartList.innerHTML = cartItems.reduce(
     (layout, product) =>
       (layout += `
@@ -71,6 +72,10 @@ cartButton.onclick = (event) => {
     </li>`),
     ``
   );
+  if (cartList.childElementCount == 0) {
+    cartList.innerHTML = `<p class = "empty-cart-label">Cart is empty</p>`;
+    return;
+  }
 };
 
 cartClose.onclick = (event) => {
@@ -78,12 +83,10 @@ cartClose.onclick = (event) => {
   body.style.overflow = "auto";
   cartPopup.classList.remove("modal-show");
 };
-const setTotalSum = (cartItems) =>{
-  const receiptSum = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity, 0
-  );
+const setTotalSum = (cartItems) => {
+  const receiptSum = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   cartReceiptSumLabel.textContent = `${receiptSum.toFixed(2)}$`;
-}
+};
 cartList.onclick = (event) => {
   let target = event.target;
 
@@ -127,7 +130,9 @@ cartList.onclick = (event) => {
 
     cartItems.splice(cartItems.indexOf(item), 1);
     product.remove();
-
+    if (cartList.childElementCount == 0) {
+      cartList.innerHTML = `<p class = "empty-cart-label">Cart is empty</p>`;
+    }
     localStorage.setItem("cart", JSON.stringify(cartItems));
     setTotalSum(cartItems);
   }
@@ -157,5 +162,3 @@ const findParentWithClass = (element, className) => {
     return null;
   }
 };
-
-
