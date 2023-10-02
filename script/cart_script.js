@@ -21,7 +21,7 @@ cartButton.onclick = (event) => {
       (layout += `
       <li class="cart-item" data-product-id="${product.id}">
       <div class="cart-main-wrapper">
-        <a href="#" class="cart-product-display">
+        <a href="./blank.html" class="cart-product-display">
           <h3>
             <span class="cart-item-title">"${product.title}"</span>
           </h3>
