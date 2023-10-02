@@ -100,7 +100,7 @@
   left: -38px;
   width: 12px;
   height: 12px;
-  background-image: url("/pictures/svg/catalog_filter_cross.svg");
+  background-image: url(./../pictures/svg/catalog_filter_cross.svg);
   background-repeat: no-repeat;
   background-position: 0 0;
 }

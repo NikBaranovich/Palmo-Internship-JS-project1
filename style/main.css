@@ -9,7 +9,7 @@
 }
 @font-face {
   font-family: PT Sans Narrow;
-  src: url(../fonts/ptsansnarrow.woff);
+  src: url(./../fonts/ptsansnarrow.woff);
 }
 * {
   box-sizing: border-box;
@@ -44,7 +44,7 @@ img {
   height: auto;
 }
 .body-index {
-  background-image: url(/pictures/jpg/index_background_main.jpg);
+  background-image: url(./../pictures/jpg/index_background_main.jpg);
 }
 .page {
   height: 100%;
@@ -113,7 +113,7 @@ img {
   height: 18px;
   width: 18px;
   background-size: 18px 18px;
-  background-image: url("/pictures/svg/shopping_cart.svg");
+  background-image: url(./../pictures/svg/shopping_cart.svg);
   background-repeat: no-repeat;
   background-position: 0 0;
   opacity: 0.3;
@@ -186,8 +186,8 @@ img {
   color: var(--basic-black);
 
   background-color: var(--basic-extra-light);
-  background-image: url("../pictures/png/index_line_news_photo.png"),
-    url("../pictures/jpg/index_background_column.jpg");
+  background-image: url(./../pictures/png/index_line_news_photo.png),
+    url(./../pictures/jpg/index_background_column.jpg);
   background-position: center, 0 0;
   background-repeat: no-repeat, repeat;
 }
@@ -373,10 +373,10 @@ img {
   opacity: 0.5;
 }
 .button-facebook {
-  content: url("/pictures/svg/Facebook.svg");
+  content: url(./../pictures/svg/Facebook.svg);
 }
 .button-instagram {
-  content: url("/pictures/svg/Instagram.svg");
+  content: url(./../pictures/svg/Instagram.svg);
 }
 .social-button:hover {
   opacity: 1;
