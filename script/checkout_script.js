@@ -9,7 +9,7 @@ const emailInput = document.getElementById("email");
 const emailErrorLabel = document.getElementById("email-error");
 const orderButton = document.getElementsByClassName("order-button")[0];
 
-phoneInput.addEventListener("input", function () {
+phoneInput.oninput = () => {
   let cleanedValue = phoneInput.value.replace(/\D/g, ""); //remove all non-numeric characters
 
   if (cleanedValue.length > 10) {
@@ -28,7 +28,7 @@ phoneInput.addEventListener("input", function () {
     formattedValue += cleanedValue[i];
   }
   phoneInput.value = formattedValue;
-});
+};
 
 const validateName = (nameInput, nameErrorLabel) => {
   const restrictedSymbols = [".", "_", "/", "\\", "|", ","];
@@ -121,13 +121,19 @@ const setCookie = (name, value, options = {}) => {
   document.cookie = updatedCookie;
 };
 
-orderForm.onsubmit = (event) => {
-  event.preventDefault();
+const redirectTo = (page) => {
+  window.location.href = page;
+};
+
+
+orderButton.onclick = (event) => {
+  // event.preventDefault();
   if (!validateInput()) {
     return;
   }
+  localStorage.setItem("cart", JSON.stringify([]));
   setCookie("name", nameInput.value, { "max-age": 3600 });
   setCookie("surname", surnameInput.value, { "max-age": 3600 });
   setCookie("phone", phoneInput.value, { "max-age": 3600 });
-  window.location.href = "index.html";
+  redirectTo("order_confirmation.html");
 };

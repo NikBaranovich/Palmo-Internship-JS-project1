@@ -133,7 +133,6 @@ div[slider] > input[type="range"]::-ms-tooltip {
 }
 
 [slider] > div > [sign] {
-  opacity: 0;
   position: absolute;
   margin-left: -19px;
   top: -39px;
@@ -171,6 +170,3 @@ div[slider] > input[type="range"]::-ms-tooltip {
   display: block;
 }
 
-[slider]:hover > div > [sign] {
-  opacity: 1;
-}

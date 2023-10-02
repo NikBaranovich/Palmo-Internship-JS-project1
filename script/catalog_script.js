@@ -9,7 +9,7 @@ async function fetchCategories() {
   return categories;
 }
 async function fetchCategoryProducts(category) {
-  if (category === "none") {
+  if (category === "all") {
     const response = await fetch("https://fakestoreapi.com/products");
     const products = await response.json();
     return products;
@@ -69,11 +69,11 @@ const setCategories = (categories) => {
       class="visually-hidden filter-input-radio filter-input"
       type="radio"
       name="product-group"
-      value="none"
-      id="filter-none"
+      value="all"
+      id="filter-all"
       checked
     />
-    <label for="filter-none">none</label>
+    <label for="filter-all">all</label>
   </li>`
   );
 };
@@ -83,7 +83,7 @@ const showToast = () => {
   toastElement.className = "show";
   setTimeout(() => {
     toastElement.className = toastElement.className.replace("show", "");
-  }, 1500);
+  }, 3000);
 };
 
 const addToCart = (products, productId) => {
@@ -101,7 +101,6 @@ const addToCart = (products, productId) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 
   showToast();
-  console.log(cart);
 };
 
 fetchGoods().then((products) => {
@@ -114,7 +113,6 @@ fetchGoods().then((products) => {
 
     const productId = target.getAttribute("data-product-id");
     addToCart(products, productId);
-    console.log(productId);
   };
 });
 
