@@ -5,5 +5,5 @@ const redirectTo = (page) => {
 };
 
 shopButton.onclick = (event) => {
-  redirectTo("catalog.html");
+  redirectTo("./catalog.html");
 };

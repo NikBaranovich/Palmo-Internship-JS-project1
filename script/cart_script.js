@@ -35,7 +35,7 @@ cartButton.onclick = (event) => {
         <button class="cart-delete-button">
           <img
             class="cart-delete-image"
-            src="/pictures/svg/delete_icon.svg"
+            src="./pictures/svg/delete_icon.svg"
             
           />
         </button>
@@ -45,7 +45,7 @@ cartButton.onclick = (event) => {
           <button class="quantity-button quantity-button-minus">
             <img
               class="quantity-button-image"
-              src="/pictures/svg/minus_icon.svg"
+              src="./pictures/svg/minus_icon.svg"
               data-product-id="${product.id}"
             />
           </button>
@@ -59,7 +59,7 @@ cartButton.onclick = (event) => {
           <button class="quantity-button quantity-button-plus">
             <img
               class="quantity-button-image"
-              src="/pictures/svg/plus_icon.svg"
+              src="./pictures/svg/plus_icon.svg"
               data-product-id="${product.id}"
             />
           </button>

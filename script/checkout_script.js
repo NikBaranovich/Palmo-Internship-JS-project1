@@ -100,7 +100,7 @@ const validateInput = () => {
 
 const setCookie = (name, value, options = {}) => {
   options = {
-    path: "/",
+    path: "./",
     ...options,
   };
 
