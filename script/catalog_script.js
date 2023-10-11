@@ -1,3 +1,8 @@
+if (!localStorage.getItem("cart")) {
+  localStorage.setItem("cart", []);
+}
+let cartItems = JSON.parse(localStorage.getItem("cart"));
+
 async function fetchGoods() {
   const response = await fetch("https://fakestoreapi.com/products");
   const products = await response.json();
@@ -14,9 +19,7 @@ async function fetchCategoryProducts(category) {
     const products = await response.json();
     return products;
   }
-  const response = await fetch(
-    `https://fakestoreapi.com/products/category/${category}`
-  );
+  const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
   const products = await response.json();
   return products;
 }
@@ -89,9 +92,7 @@ const showToast = () => {
 const addToCart = (products, productId) => {
   let cart = cartItems;
   const product = products.find((product) => product.id == productId);
-  const existedProduct = cart.find(
-    (cartProduct) => cartProduct.id == productId
-  );
+  const existedProduct = cart.find((cartProduct) => cartProduct.id == productId);
   if (!cart.length || !existedProduct) {
     product.quantity = 1;
     cart.push(product);
@@ -121,15 +122,11 @@ fetchCategories().then((categories) => {
 });
 
 filterButton.onclick = () => {
-  const filterCategory = document.querySelector(
-    'input[name="product-group"]:checked'
-  ).value;
+  const filterCategory = document.querySelector('input[name="product-group"]:checked').value;
   const priceMin = document.querySelector(".price-slider-min").value;
   const priceMax = document.querySelector(".price-slider-max").value;
   fetchCategoryProducts(filterCategory).then((products) => {
-    products = products.filter(
-      (product) => product.price < priceMax && product.price > priceMin
-    );
+    products = products.filter((product) => product.price < priceMax && product.price > priceMin);
     setProducts(products);
   });
 };
